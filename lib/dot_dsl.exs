@@ -19,7 +19,7 @@ defmodule Dot do
 
   defmacro node(name, node_attrs) do
     quote do
-      put_node({unquote(name), unquote(node_attrs)})
+      put_node(var!(buffer, Dot), [{unquote(name), unquote(node_attrs)}])
     end
   end
 
@@ -35,7 +35,7 @@ defmodule Dot do
       {:ok, var!(buffer, Dot)} = start_buffer(%Graph{})
       #unquote(ast)
       Code.eval_quoted(unquote(ast), [], __ENV__)
-      graph_output = Agent.get(var!(buffer, Doc), &(&1))
+      graph_output = Agent.get(var!(buffer, Dot), &(&1))
       :ok = stop_buffer(var!(buffer, Dot))
       graph_output
     end
