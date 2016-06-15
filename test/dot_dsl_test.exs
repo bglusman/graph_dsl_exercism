@@ -7,6 +7,7 @@ ExUnit.configure exclude: :pending, trace: true
 defmodule DotTest do
   use ExUnit.Case
   require Dot
+  require IEx
 
   # Expand at RunTime, used to avoid invalid macro calls preventing compilation
   # of the tests.
