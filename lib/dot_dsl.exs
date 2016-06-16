@@ -44,8 +44,13 @@ defmodule Dot do
       import Dot
       import Kernel, except: [{:--, 2}]
       {:ok, var!(buffer, Dot)} = start_buffer(%Graph{})
-      #unquote(ast)
-      Code.eval_quoted(unquote(ast), [], __ENV__)
+      try do
+        Code.eval_quoted(unquote(ast), [], __ENV__)
+      rescue
+        e in CompileError ->
+          unquote(IEx.pry)
+          raise ArgumentError
+      end
       graph_output = Agent.get(var!(buffer, Dot), &(&1))
       :ok = stop_buffer(var!(buffer, Dot))
       sorted_nodes =  put_in graph_output.nodes, Enum.sort(graph_output.nodes)

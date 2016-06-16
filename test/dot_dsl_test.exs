@@ -61,7 +61,6 @@ defmodule DotTest do
     end)
   end
 
-  @tag :pending
   test "keywords stuck to graph without space" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -70,7 +69,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "keywords stuck to node without space" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -79,7 +77,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "keywords stuck to edge without space" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -88,7 +85,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "invalid statement: int" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -98,7 +94,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "invalid statement: list" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -107,7 +102,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "invalid statement: qualified atom" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -116,7 +110,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "invalid statement: graph with no keywords" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -125,7 +118,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "two attribute lists" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -134,7 +126,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "non-keyword attribute list" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
@@ -143,7 +134,6 @@ defmodule DotTest do
     end
   end
 
-  @tag :pending
   test "int edge" do
     assert_raise ArgumentError, fn ->
       exprt(Dot.graph do
