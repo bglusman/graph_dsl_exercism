@@ -32,7 +32,6 @@ defmodule DotTest do
     assert %Graph{nodes: [{:a, [color: :green]}]} == exprt(Dot.graph do a [color: :green] end)
   end
 
-  @tag :pending
   test "graph with one edge" do
     assert %Graph{edges: [{:a, :b, []}]} == exprt(Dot.graph do a -- b end)
   end

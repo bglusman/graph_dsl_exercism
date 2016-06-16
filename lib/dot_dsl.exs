@@ -23,6 +23,13 @@ defmodule Dot do
     end
   end
 
+  defmacro edge1 -- edge2 do
+    # if is_nil(edge1) || is_nil(edge2), do: raise ArgumentError
+    quote do
+      put_edge(var!(buffer, Dot), [{unquote(elem(edge1,0)), unquote(elem(edge2, 0)), []}])
+    end
+  end
+
   def start_buffer(state), do: Agent.start_link(fn -> state end)
   def stop_buffer(buff), do: Agent.stop(buff)
   def put_node(buff, content), do: Agent.update(buff, &(put_in &1.nodes, content)) 
@@ -32,6 +39,7 @@ defmodule Dot do
   defmacro graph(do: ast) do
     quote do
       import Dot
+      import Kernel, except: [{:--, 2}]
       {:ok, var!(buffer, Dot)} = start_buffer(%Graph{})
       #unquote(ast)
       Code.eval_quoted(unquote(ast), [], __ENV__)
